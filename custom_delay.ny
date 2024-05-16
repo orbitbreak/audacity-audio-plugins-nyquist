@@ -10,8 +10,8 @@
 ;control repeats "repeats" int "repeats" 5 1 30
 
 (defun delays (s decay delay repeats)
-    (if (= repeats 0) (cue s)
-       (sim (cue s)
-        (loud decay (at delay (delays s decay delay (- repeats 1)))))))
+              (if (= repeats 0) (cue s)
+                  (sim (cue s)
+                       (loud decay (at delay (delays s decay delay (- repeats 1)))))))
 
 (stretch-abs 1 (delays s (- 0 decay) delay repeats))

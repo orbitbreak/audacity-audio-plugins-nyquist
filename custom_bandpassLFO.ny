@@ -14,13 +14,13 @@
 (setf center (/ factor 2.0))
 
 (defun get-lfo (f phase factor center)
-(sum center (mult factor
-	(sum 0.5 (mult 0.5 (lfo f 1.0 *sine-table* phase))))))
+               (sum center (mult factor
+                           (sum 0.5 (mult 0.5 (lfo f 1.0 *sine-table* phase))))))
 
 (defun normalize (signal)
     (setf x (if (arrayp signal)
-        (max (peak (aref signal 0) ny:all) (peak (aref signal 1) ny:all))
-        (peak signal ny:all)))
+            (max (peak (aref signal 0) ny:all) (peak (aref signal 1) ny:all))
+            (peak signal ny:all)))
     (scale (/ 0.95 x) signal))
 
 (normalize (hp s (get-lfo f phase factor center)))

@@ -13,10 +13,10 @@
 
 ; normalize?
 (defun normalize (signal norm-level)
-    (setf x (if (not (arrayp signal))
-        (peak signal ny:all) ; ;;;; mono handle
-        (max (peak (aref signal 0) ny:all) (peak (aref signal 1) ny:all)))) ; ;;;; stereo handle
-    (scale (/ norm-level x) signal))
+                 (setf x (if (not (arrayp signal))
+                         (peak signal ny:all) ; ;;;; mono handle
+                         (max (peak (aref signal 0) ny:all) (peak (aref signal 1) ny:all)))) ; ;;;; stereo handle
+                 (scale (/ norm-level x) signal))
 
 
 ; EQ
