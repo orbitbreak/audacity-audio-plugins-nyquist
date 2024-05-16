@@ -1,20 +1,16 @@
 #!/bin/bash
+findfilepattern="custom_*.ny"
+grepfilepattern="custom_*.*ny"
 
-echo "Copying these files (only overwrites)":
-
-find -name "*.ny" -type f
-
-echo To target directory:
-
-echo "/mnt/c/Program Files/Audacity/Plug-Ins/"
-
+echo "Copying these files matching $findfilepattern":
+find -name "$findfilepattern" -type f
 echo ...
-
-find -name "*.ny" -type f | xargs -I {} cp {} "/mnt/c/Program Files/Audacity/Plug-Ins/"
-
+echo  To target directory: \"/mnt/c/Program Files/Audacity/Plug-Ins/\"
+echo "        AKA winpath: \"$(wslpath -w '/mnt/c/Program Files/Audacity/Plug-Ins/')\" "
+echo "   (Requires admin terminal session)"
 echo ...
-
-echo Done! Checking modified times with \"ls -lha \"/mnt/c/Program Files/Audacity/Plug-Ins/\" \| grep custom \"
-
-ls -lha "/mnt/c/Program Files/Audacity/Plug-Ins/" | grep custom 
+find -name "$findfilepattern" -type f | xargs -I {} cp -f {} "/mnt/c/Program Files/Audacity/Plug-Ins/"
+echo ...
+echo Done! Check results with: ls -lha \"/mnt/c/Program Files/Audacity/Plug-Ins/\" \| grep \"$grepfilepattern\"
+ls -lha "/mnt/c/Program Files/Audacity/Plug-Ins/" | grep --color "$grepfilepattern"
 

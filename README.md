@@ -1,5 +1,5 @@
 Audacity audio plugins written in Nyquist. 
-Copy to Audacity/Plug-Ins dir. 
+Copy to Audacity/Plug-Ins dir (WSL bash script included)
 
 Plugins list:
 - Delay with decay/delaytime/repeats
@@ -13,3 +13,4 @@ Plugins list:
 - Tone Harmonics Generator with FreqOrMidi/freq/midi-note/harmonicscount/duration/level
 - Tone Harmonics Generator with FreqOrMidi/freq/midi-note/harmonicscount/duration/level
 - Tone Sweep Generator with startfreq/endfreq/duration/level/scale
+
